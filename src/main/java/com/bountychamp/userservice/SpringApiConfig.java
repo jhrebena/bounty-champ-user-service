@@ -1,5 +1,6 @@
 package com.bountychamp.userservice;
 
+import com.bountychamp.userservice.controller.CreateUserController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ import com.bountychamp.userservice.controller.PingController;
 @Configuration
 // We use direct @Import instead of @ComponentScan to speed up cold starts
 // @ComponentScan("com.bountychamp.userservice.controller")
-@Import({ PingController.class })
+@Import({ PingController.class, CreateUserController.class })
 public class SpringApiConfig {
     /*
      * Create required HandlerMapping, to avoid several default HandlerMapping instances being created

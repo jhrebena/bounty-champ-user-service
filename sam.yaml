@@ -23,8 +23,13 @@ Resources:
             Method: any
 
 Outputs:
-  BountyChampUserServiceApi:
-    Description: URL for application
+  PingApi:
+    Description: URL for Ping API
     Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping'
     Export:
-      Name: BountyChampUserServiceApi
+      Name: PingApi
+  CreateUserApi:
+    Description: URL for CreateUser API
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/create-user'
+    Export:
+      Name: CreateUserApi
