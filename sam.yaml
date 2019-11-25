@@ -4,13 +4,13 @@ Description: AWS Serverless Spring API - com.bountychamp.userservice::bounty-cha
 Globals:
   Api:
     EndpointConfiguration: REGIONAL
-
 Resources:
   BountyChampUserServiceFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.bountychamp.userservice.StreamLambdaHandler::handleRequest
       Runtime: java8
+#      CodeUri: s3://jefftestbucket122333/12358740f0223516c21b595e40875cca
       CodeUri: target/bounty-champ-user-service-1.0-SNAPSHOT-lambda-package.zip
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
@@ -20,16 +20,22 @@ Resources:
           Type: Api
           Properties:
             Path: /{proxy+}
-            Method: any
+            Method: ANY
+  UserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "UserId"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "UserId"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
 
 Outputs:
   PingApi:
     Description: URL for Ping API
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping'
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping
     Export:
       Name: PingApi
-  CreateUserApi:
-    Description: URL for CreateUser API
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/create-user'
-    Export:
-      Name: CreateUserApi

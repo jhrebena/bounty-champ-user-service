@@ -5,6 +5,7 @@ target/
 # Files #
 ##############
 output-sam.yaml
+package-lock.json
 
 # Compiled source #
 ###################
