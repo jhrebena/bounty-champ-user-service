@@ -1,13 +1,8 @@
 package com.bountychamp.userservice;
 
-import com.bountychamp.userservice.controller.CreateUserController;
-import com.bountychamp.userservice.controller.LoginController;
-import com.bountychamp.userservice.controller.PingController;
-import com.bountychamp.userservice.controller.UpdateUserController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.HandlerMapping;

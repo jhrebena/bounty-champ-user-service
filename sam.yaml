@@ -13,7 +13,9 @@ Resources:
 #      CodeUri: s3://jefftestbucket122333/12358740f0223516c21b595e40875cca
       CodeUri: target/bounty-champ-user-service-1.0-SNAPSHOT-lambda-package.zip
       MemorySize: 512
-      Policies: AWSLambdaBasicExecutionRole
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonDynamoDBFullAccess
       Timeout: 15
       Events:
         GetResource:
